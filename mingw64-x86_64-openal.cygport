@@ -1,0 +1,35 @@
+CROSS_HOST="x86_64-w64-mingw32"
+inherit cross cmake
+
+NAME="mingw64-x86_64-openal"
+VERSION=1.15.1
+RELEASE=1
+CATEGORY="Devel"
+SUMMARY="OpenAL for Win64 toolchain"
+DESCRIPTION="OpenAL Soft is an LGPL-licensed, cross-platform, software
+implementation of the OpenAL 3D audio API. OpenAL provides capabilities for
+playing audio in a virtual 3D environment. Distance attenuation, doppler shift,
+and directional sound emitters are among the features handled by the API. More
+advanced effects, including air absorption, occlusion, and environmental
+reverb, are available through the EFX extension. It also facilitates streaming
+audio, multi-channel buffers, and audio capture."
+HOMEPAGE="http://kcat.strangesoft.net/openal.html"
+SRC_URI="http://kcat.strangesoft.net/openal-releases/openal-soft-${PV}.tar.bz2"
+SRC_DIR="openal-soft-${VERSION}"
+
+# PTHREAD means -pthread flag not pthread usage
+CYGCMAKE_ARGS="
+	-DALSA=OFF
+	-DOSS=OFF
+	-DDLOPEN=OFF
+	-DDSOUND=ON
+	-DPORTAUDIO=OFF
+	-DPULSEAUDIO=OFF
+	-DSOLARIS=OFF
+	-DWINMM=ON
+	-DUTILS=OFF
+	-DHAVE_PTHREAD=OFF
+	-DHAVE_LIBWINMM=ON -DEXTRA_LIBS=winmm
+	-DHAVE_VISIBILITY_INTERNAL_SWITCH=OFF
+	-DHAVE_VISIBILITY_HIDDEN_SWITCH=OFF
+"
