@@ -3,7 +3,7 @@ inherit cross cmake
 
 NAME="mingw64-x86_64-openal"
 VERSION=1.15.1
-RELEASE=1
+RELEASE=2
 CATEGORY="Devel"
 SUMMARY="OpenAL for Win64 toolchain"
 DESCRIPTION="OpenAL Soft is an LGPL-licensed, cross-platform, software
@@ -19,6 +19,7 @@ SRC_DIR="openal-soft-${VERSION}"
 
 # PTHREAD means -pthread flag not pthread usage
 CYGCMAKE_ARGS="
+	-DALSOFT_CONFIG=OFF
 	-DALSA=OFF
 	-DOSS=OFF
 	-DDLOPEN=OFF
@@ -32,4 +33,7 @@ CYGCMAKE_ARGS="
 	-DHAVE_LIBWINMM=ON -DEXTRA_LIBS=winmm
 	-DHAVE_VISIBILITY_INTERNAL_SWITCH=OFF
 	-DHAVE_VISIBILITY_HIDDEN_SWITCH=OFF
+	-DCMAKE_SHARED_LIBRARY_NAME_WITH_VERSION=OFF
 "
+
+DOCS="alsoftrc.sample"
