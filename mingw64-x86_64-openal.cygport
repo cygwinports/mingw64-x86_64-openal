@@ -2,8 +2,8 @@ CROSS_HOST="x86_64-w64-mingw32"
 inherit cross cmake
 
 NAME="mingw64-x86_64-openal"
-VERSION=1.15.1
-RELEASE=2
+VERSION=1.17.0
+RELEASE=1
 CATEGORY="Devel"
 SUMMARY="OpenAL for Win64 toolchain"
 DESCRIPTION="OpenAL Soft is an LGPL-licensed, cross-platform, software
@@ -14,21 +14,30 @@ advanced effects, including air absorption, occlusion, and environmental
 reverb, are available through the EFX extension. It also facilitates streaming
 audio, multi-channel buffers, and audio capture."
 HOMEPAGE="http://kcat.strangesoft.net/openal.html"
-SRC_URI="http://kcat.strangesoft.net/openal-releases/openal-soft-${PV}.tar.bz2"
+SRC_URI="http://kcat.strangesoft.net/openal-releases/openal-soft-${VERSION}.tar.bz2"
 SRC_DIR="openal-soft-${VERSION}"
 
 # PTHREAD means -pthread flag not pthread usage
 CYGCMAKE_ARGS="
 	-DALSOFT_CONFIG=OFF
-	-DALSA=OFF
-	-DOSS=OFF
-	-DDLOPEN=OFF
-	-DDSOUND=ON
-	-DPORTAUDIO=OFF
-	-DPULSEAUDIO=OFF
-	-DSOLARIS=OFF
-	-DWINMM=ON
-	-DUTILS=OFF
+	-DALSOFT_BACKEND_ALSA=OFF
+	-DALSOFT_BACKEND_COREAUDIO=OFF
+	-DALSOFT_BACKEND_DSOUND=ON
+	-DALSOFT_BACKEND_JACK=OFF
+	-DALSOFT_BACKEND_MMDEVAPI=ON
+	-DALSOFT_BACKEND_OPENSL=OFF
+	-DALSOFT_BACKEND_OSS=OFF
+	-DALSOFT_BACKEND_PORTAUDIO=OFF
+	-DALSOFT_BACKEND_PULSEAUDIO=OFF
+	-DALSOFT_BACKEND_QSA=OFF
+	-DALSOFT_BACKEND_SNDIO=OFF
+	-DALSOFT_BACKEND_SOLARIS=OFF
+	-DALSOFT_BACKEND_WAVE=ON
+	-DALSOFT_BACKEND_WINMM=ON
+	-DALSOFT_EXAMPLES=OFF
+	-DALSOFT_TESTS=OFF
+	-DALSOFT_UTILS=ON
+	-DALSOFT_NO_CONFIG_UTIL=ON
 	-DHAVE_PTHREAD=OFF
 	-DHAVE_LIBWINMM=ON -DEXTRA_LIBS=winmm
 	-DHAVE_VISIBILITY_INTERNAL_SWITCH=OFF
