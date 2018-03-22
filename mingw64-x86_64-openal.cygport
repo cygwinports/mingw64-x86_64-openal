@@ -2,7 +2,7 @@ CROSS_HOST="x86_64-w64-mingw32"
 inherit cross cmake
 
 NAME="mingw64-x86_64-openal"
-VERSION=1.17.0
+VERSION=1.18.2
 RELEASE=1
 CATEGORY="Devel"
 SUMMARY="OpenAL for Win64 toolchain"
